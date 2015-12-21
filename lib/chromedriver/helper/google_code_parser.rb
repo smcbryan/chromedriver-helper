@@ -20,9 +20,11 @@ module Chromedriver
         items.map {|k| "#{BUCKET_URL}/#{k}"}
       end
 
+      # Lock chromedriver version to 2.20 to prevent backslash or unwanted updates
       def newest_download
-        downloads.last
+        downloads.select{|x| x =~ /\/2.20\//}.last
       end
+
     end
   end
 end
